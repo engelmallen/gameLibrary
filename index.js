@@ -20,7 +20,7 @@ let getGames = async () => {
 }
 
 let makeBlocks = (block) => {
-	let createIt =
+	return
 		`<div id="info" class="border w-100 rounded ">
 		<div class="card" style="width: 18rem;">
 			<img src="${block.background_image}" class="card-img-top" alt="...">
@@ -31,7 +31,6 @@ let makeBlocks = (block) => {
 			</div>
 		</div>
 	</div>`;
-	return createIt
 }
 
 getGames()

@@ -40,7 +40,7 @@ searchBtn.addEventListener('click', function(){
 	let makeGames = games.results.filter((i)=>{
 		return i.name === searchBar.value		
 	})
-	info.value = makeBlocks(makeGames[0])
+	info.innerHTML = makeBlocks(makeGames)
 	console.log(makeGames);
 })
 

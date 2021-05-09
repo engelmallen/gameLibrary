@@ -38,8 +38,8 @@ getGames()
 getSystems()
 
 searchBtn.addEventListener('click', function(){
-	let makeGames = games.results.map((i)=>{
-		info.innerHTML += makeBlocks(i)
+	let makeGames = games.results.filter((i)=>{
+		return i.name === searchBar.value
 		
 	})
 	console.log(makeGames);

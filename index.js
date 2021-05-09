@@ -39,9 +39,9 @@ getSystems()
 
 searchBtn.addEventListener('click', function(){
 	let makeGames = games.results.filter((i)=>{
-		return i.name === searchBar.value
-		
+		return i.name === searchBar.value		
 	})
+	makeBlocks(makeGames)
 	console.log(makeGames);
 })
 

@@ -2,51 +2,58 @@ let searchBar = document.getElementById('searchBar')
 let searchBtn = document.getElementById('searchBtn')
 let info = document.getElementById('info')
 
-let systems = null;
-let games = null;
+// let systems = "";
+let games = ""; 
 
-let getSystems = async () => {
-	const response = await fetch("https://api.rawg.io/api/platforms?key=24c80e1f2a1345e09c8964b0e655605a")
-	
-	systems = await response.json();
-	 console.log(systems)
-}
+// let getSystems = async () => {
+// 	const response = await fetch("https://api.rawg.io/api/platforms?key=24c80e1f2a1345e09c8964b0e655605a")
+// 	systems = await response.json();
+// 	 console.log(systems)
+// }
 
 let getGames = async () => {
-	const response = await fetch("https://api.rawg.io/api/games?key=24c80e1f2a1345e09c8964b0e655605a&dates=2019-09-01,2019-09-30&platforms=18,1,7")
-	
+	const response = await fetch("https://api.rawg.io/api/games?key=24c80e1f2a1345e09c8964b0e655605a")
 	games = await response.json();
 	 console.log(games)
 }
 
+getGames()
+// getSystems()
+
 let makeBlocks = (block) => {
-	return
-		`<div id="info" class="border w-100 rounded ">
-		<div class="card" style="width: 18rem;">
-			<img src="${block.background_image}" class="card-img-top" alt="...">
-			<div class="card-body">
-			<h5 class="card-title">${block.name}</h5>
-			<p class="card-text">${block.rating}</p>
-			<a href="#" class="btn btn-primary">Go somewhere</a>
+	block.map((a)=>{
+	info.innerHTML +=
+		`<div id="info" class="border rounded col-lg-4 text-center">
+			<div class="card">
+				<div class="cardImage" style="background-image: url('${a.background_image}')"></div>
+				
+				<div class="card-body">
+					<h5 class="card-title">${a.name}</h5>
+					<p class="card-text">${a.rating}</p>
+					<a href="#" class="btn btn-primary">Go somewhere</a>
+				</div>
 			</div>
-		</div>
-	</div>`;
+		</div>`;
+	})
 }
 
-getGames()
-getSystems()
+let makeGames = (a) =>{
+	info.innerHTML =""
+	let searchBarValue = searchBar.value.toLowerCase();
+	let getNewGames = a.results.filter((i)=>{
+			return i.name.toLowerCase().includes(searchBarValue)
+	})	
+	makeBlocks(getNewGames)  
+}
 
-searchBtn.addEventListener('click', function(){
-	let makeGames = games.results.filter((i)=>{
-		return i.name === searchBar.value		
-	})
-	info.innerHTML = makeBlocks(makeGames)
-	console.log(makeGames);
-})
+searchBar.addEventListener('keyup', ()=>{makeGames(games)})
 
+// let makeGames = (foundGame)=>{ 
+// 	games.results.find((i)=>{
+// 		return i.name.toLowerCase().includes(a)
+// })}
 
-
-
-/*
-GET https://api.rawg.io/api/platforms?key=24c80e1f2a1345e09c8964b0e655605a
-GET https://api.rawg.io/api/games?key=24c80e1f2a1345e09c8964b0e655605a&dates=2019-09-01,2019-09-30&platforms=18,1,7*/
+// searchBar.addEventListener('keyup', function(a){
+// 	info.innerHTML = makeBlocks(makeGames)
+// 	console.log(makeGames);
+// })

@@ -11,13 +11,43 @@ let games = "";
 // 	 console.log(systems)
 // }
 
+// let response = ""
+
+// let rollResponse = async (x) => {
+// 	for (var i = 1; i <= 5; i++) {
+// 		let response += await fetch(x+i)
+// 		games += await response.json()
+// 	}
+// }
+
+
+
 let getGames = async () => {
-	const response = await fetch("https://api.rawg.io/api/games?key=24c80e1f2a1345e09c8964b0e655605a")
+	
+	let response = await fetch(`https://api.rawg.io/api/games?key=24c80e1f2a1345e09c8964b0e655605a&page?=3`)
 	games = await response.json();
-	 console.log(games)
+
+		// for (var i = 2; i <= 5; i++) {
+		// 	let response = await fetch(`https://api.rawg.io/api/games?key=24c80e1f2a1345e09c8964b0e655605a&page?=${i}`)
+		// 	games += await response.json().results
+		// 	}
+	console.log(games)
+
+	// const responseNext += await fetch(games.next)
+	// console.log(games)
 }
 
+// let getNextGames = async (x) => {
+// 	const response = await fetch(x)
+// 	games = await response.json();
+// 	console.log(games)
+// 	console.log(games.next)
+// }
+
 getGames()
+// getGames(`https://api.rawg.io/api/games?key=24c80e1f2a1345e09c8964b0e655605a`)
+// getGames(games.next)
+
 // getSystems()
 
 let makeBlocks = (block) => {

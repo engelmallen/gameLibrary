@@ -6,7 +6,7 @@ let info = document.getElementById('info')
 let games = ""; 
 
 // let getSystems = async () => {
-// 	const response = await fetch("https://api.rawg.io/api/platforms?key=24c80e1f2a1345e09c8964b0e655605a")
+// 	const response = await fetch("https://api.rawg.io/api/platforms?key=")
 // 	systems = await response.json();
 // 	 console.log(systems)
 // }
@@ -24,11 +24,11 @@ let games = "";
 
 let getGames = async () => {
 	
-	let response = await fetch(`https://api.rawg.io/api/games?key=24c80e1f2a1345e09c8964b0e655605a&page?=3`)
+	let response = await fetch(`https://api.rawg.io/api/games?key=&page?=3`)
 	games = await response.json();
 
 		// for (var i = 2; i <= 5; i++) {
-		// 	let response = await fetch(`https://api.rawg.io/api/games?key=24c80e1f2a1345e09c8964b0e655605a&page?=${i}`)
+		// 	let response = await fetch(`https://api.rawg.io/api/games?key=&page?=${i}`)
 		// 	games += await response.json().results
 		// 	}
 	console.log(games)
@@ -45,7 +45,7 @@ let getGames = async () => {
 // }
 
 getGames()
-// getGames(`https://api.rawg.io/api/games?key=24c80e1f2a1345e09c8964b0e655605a`)
+// getGames(`https://api.rawg.io/api/games?key=`)
 // getGames(games.next)
 
 // getSystems()
